@@ -5,7 +5,7 @@ Updated Net Yaroze headers which let you use Psy-Q SDK as if it was Net Yaroze S
 # Net Yaroze Documentation
 https://archive.org/details/net-yaroze-documents/020-1997-userguide/mode/1up
 
-# Net Yaroze SCEE archive with examples
+# Net Yaroze site archive with docs & examples
 https://archive.org/details/webyaroze.7z
 
 # Executable Load Address
