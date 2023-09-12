@@ -33,17 +33,16 @@ You would load your assets a similar way to the siocons script, ie:
 
 In the .vscode\launch.json file, autorun section, the equivalent would be:
 
->"restore data\\\\\\\\OPTIONS.TIM  binary 0x801292E8",
+>"restore data/OPTIONS.TIM  binary 0x801292E8",
 >
->"restore data\\\\\\\\SWORD.TIM  binary 0x8012A508",
+>"restore data/SWORD.TIM  binary 0x8012A508",
 >
 >"load ${workspaceRootFolderName}.elf"
 >
 >"tbreak main",
 >
 >"continue"
-
-There are 4 slash for the DOS path because of the communication protocol in GDB. 
+ 
 
 # Repo from
 https://github.com/gwald/psyq_to_netyaroze
