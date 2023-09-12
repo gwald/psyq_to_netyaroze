@@ -11,7 +11,11 @@ https://archive.org/details/webyaroze.7z
 # Executable Load Address
 The linker tells the program where to load the program in RAM, the default address is 0x80010000 (PSX RAM address range from 0x80010000 to 0x801fffff which is 2MB).
 
-Loading at 0x80010000 is a problem because that's the location of the Net Yaroze libps.exe file (like a DLL which makes executables smaller to transfer over serial - See [Memory Map in the Net Yaroze User Guide PDF](https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/38/mode/1up) for more information, we need to change it in the MakeFile using:
+Loading at 0x80010000 is a problem because that's the location of the Net Yaroze libps.exe file in RAM (like a DLL which makes executables smaller to transfer over serial - See [Memory Map in the Net Yaroze User Guide PDF](https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/38/mode/1up) for more information.
+
+So, we must *always* tell the linker to use a correct execuatble load address, it can be loaded low (exe first ie:0x80090000, then assets high) or high(assets first, then exe high ie: 0x80100000)).
+
+The Net Yaroze default is typically 0x80090000, we do this via the MakeFile using:
 
 >LDFLAGS=-Xlinker --defsym=TLOAD_ADDR=0x80090000
 
@@ -23,9 +27,9 @@ The loading of assets into RAM can also be replicated in Visual Code. The debugg
 
 You would load your assets a similar way to the siocons script, ie:
 
->local dload data\OPTIONS.TIM 801292E8
+>local dload data\OPTIONS.TIM 0x801292E8
 >
->local dload data\SWORD.TIM 8012A508
+>local dload data\SWORD.TIM 0x8012A508
 >
 >local load main.exe
 >
