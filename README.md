@@ -25,7 +25,7 @@ This script can be use to package the assets and executable into a single PlaySt
 
 The loading of assets into RAM can also be replicated in Visual Code. The debugger has to first pre-loaded the assets into the correct RAM address when pressing F5. This is done via the file in your project folder: .vscode\launch.json
 
-You would load your assets a similar way to the siocons script, ie:
+You would load your assets and executable in a similar way to the siocons script, ie:
 
 >local dload data\OPTIONS.TIM 0x801292E8
 >
