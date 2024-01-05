@@ -14,8 +14,6 @@ extern  "C" {
 // from #include <libapi.h>
  long InitPAD(char *,long ,char *,long);
  long StartPAD(void);
- void ChangeClearPAD(long);
- void PadInit(long);
 
 #if defined(_LANGUAGE_C_PLUS_PLUS)||defined(__cplusplus)||defined(c_plusplus)
 } //extern  "C"
