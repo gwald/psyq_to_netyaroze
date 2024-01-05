@@ -21,19 +21,19 @@ typedef unsigned int size_t;  /* result type of the sizeof operator (ANSI) */
 #endif
 
 #if defined(_LANGUAGE_C_PLUS_PLUS)||defined(__cplusplus)||defined(c_plusplus)
-extern "C" {
+extern  "C" {
 #endif
 /* To avoid conflicting */
-extern void *memcpy (/*  unsigned char *, unsigned char *, int  */); 
-extern void *memmove(unsigned char *, unsigned char *, int);
+ void *memcpy ( unsigned char *, unsigned char *, int  ); 
+ void *memmove(unsigned char *, unsigned char *, int);
 /* To avoid conflicting */
-extern int   memcmp (/*  unsigned char *, unsigned char *, int  */);
-extern void *memchr (unsigned char *, unsigned char, int);
-extern void *memset (unsigned char *, unsigned char, int);
+ int   memcmp (/*  unsigned char *, unsigned char *, int  */);
+ void *memchr (unsigned char *, unsigned char, int);
+ void *memset (unsigned char *, unsigned char, int);
 
-extern void *bcopy(unsigned char *, unsigned char *, int); /* src,dest */
-extern void *bzero(unsigned char *, int);
-extern int   bcmp (unsigned char *, unsigned char *, int);
+ void *bcopy(unsigned char *, unsigned char *, int); /* src,dest */
+ void *bzero(unsigned char *, int);
+ int   bcmp (unsigned char *, unsigned char *, int);
 #if defined(_LANGUAGE_C_PLUS_PLUS)||defined(__cplusplus)||defined(c_plusplus)
 }
 #endif
