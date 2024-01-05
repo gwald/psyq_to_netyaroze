@@ -25,22 +25,22 @@ typedef unsigned int size_t;  /* result type of the sizeof operator (ANSI) */
 #include <memory.h>
 
 #if defined(_LANGUAGE_C_PLUS_PLUS)||defined(__cplusplus)||defined(c_plusplus)
-extern "C" {
+extern  "C" {
 #endif
-extern char *strcat (char *, char *);
-extern char *strncat(char *, char *, int);
-extern int   strcmp (/* char *, char * */);	/* To avoid conflicting */
-extern int   strncmp(char *, char *, int);
-extern char *strcpy (/* char *, char * */);	/* To avoid conflicting */
-extern char *strncpy(char *, char *, int);
-extern int   strlen (/* char * */);		/* To avoid conflicting */
-extern char *strchr (char *, char);
-extern char *strrchr(char *, char);
-extern char *strpbrk(char *, char *);
-extern int   strspn (char *, char *);
-extern int   strcspn(char *, char *);
-extern char *strtok (char *, char *);
-extern char *strstr (char *, char *);
+ char *strcat (char *, char *);
+ char *strncat(char *, char *, int);
+ int   strcmp ( char *, char * );	/* To avoid conflicting */
+ int   strncmp(char *, char *, int);
+ char *strcpy ( char *, char * );	/* To avoid conflicting */
+ char *strncpy(char *, char *, int);
+ int   strlen (char *);		/* To avoid conflicting */
+ char *strchr (char *, char);
+ char *strrchr(char *, char);
+ char *strpbrk(char *, char *);
+ int   strspn (char *, char *);
+ int   strcspn(char *, char *);
+ char *strtok (char *, char *);
+ char *strstr (char *, char *);
 #if defined(_LANGUAGE_C_PLUS_PLUS)||defined(__cplusplus)||defined(c_plusplus)
 }
 #endif
