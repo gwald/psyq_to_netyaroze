@@ -13,10 +13,12 @@
 
 #include <sys/types.h>
 
-// Differences
-// Removed extern from all function prototypes
-// Brige from Net Yaroze to PSYQ
-#include <psyq.h>
+// libps.h differences:
+// Put inbetween #ifndef _LIBPS_H_
+// Removed extern from all function prototypes.
+// Note: GsInitGraph must be called FIRST before using libGS functions like FntLoad
+// Added this to brigde from Net Yaroze to PSY-Q
+#include <ny_psyq.h>
 
 /*
  * Structures
@@ -520,7 +522,9 @@ int VSyncCallback(void (*f)()) ;
  int sprintf2(char *, char *, ...);
 
 /* Misccellaneous Functions */
-// PSYQ  void GetPadBuf(volatile unsigned char **, volatile unsigned char **);
+
+// NY Only function, recreated in PSY-Q as an inline function in ny_psyq.h 
+// void GetPadBuf(volatile unsigned char **, volatile unsigned char **);
 
  long GetRCnt(unsigned long);
  long ResetRCnt(unsigned long);
@@ -558,6 +562,8 @@ int VSyncCallback(void (*f)()) ;
 /* ----------------------------------------------------------------
  *	End on File
  * ---------------------------------------------------------------- */
+
+#undef _LIBPS_H_
 #endif /* _LIBPS_H_ */
 /* DON'T ADD STUFF AFTER THIS */
 
