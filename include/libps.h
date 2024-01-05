@@ -20,6 +20,9 @@
 // Added this to brigde from Net Yaroze to PSY-Q
 #include <ny_psyq.h>
 
+// exit not defined in headers.
+extern void exit(int);
+
 /*
  * Structures
  */
@@ -536,7 +539,7 @@ void    GsScaleScreen(SVECTOR * scale);
  int write(int, char *, int);
  struct DIRENTRY * firstfile(char *, struct DIRENTRY *);
  struct DIRENTRY * nextfile(struct DIRENTRY *);
-// int delete(char *); - conflicts with C++
+ int delete(char *); // memory card detele - conflicts with C++
  int format(char *);
  int rename(char *, char *);
  long LoadTest(char *, struct EXEC *);
