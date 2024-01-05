@@ -1,192 +1,210 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>PSX.Dev Visual Studio Code Extension for Net Yaroze</title>
-  </head>
-  <body>
-    <div class="b3-fullpost">
-      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <h2 id="PSX.Dev_Visual_Studio_Code_Extension">PSX.Dev Visual
-        Studio Code Extension</h2>
-      <p class="vspace">The <a target="_blank" class="urllink"
-          href="https://psx.dev" rel="nofollow">PSX.Dev</a> community
-        have extracted the professional (Psy-Q) libraries and made them
-        usable with a modern GCC compiler and debugger. They are also
-        maintaining the PS1 emulator <a target="_blank" class="urllink"
-          href="https://github.com/grumpycoders/pcsx-redux"
-          rel="nofollow">PCSX-REDUX</a> which also allows GDB to step
-        through code. And they have combined all these projects into a
-        simple Visual Studio code extension. </p>
-      <p class="vspace">From early testing, it does not support float's
-        or any functions which uses them. </p>
-      <p class="vspace">Net Yaroze, being a cut down version of the
-        professional SDK, it is relatively simple to create a Net Yaroze
-        compatible project. </p>
-      <dl>
-        <dt>Pro's-</dt>
-        <dd> <br>
-        </dd>
-      </dl>
-      <ul>
-        <li>Modern OS (Linux and Windows), toolchain and IDE. </li>
-        <li>Visual step debugger via PCSX-REDUX or a real PlayStation
-          using <a target="_blank" class="urllink"
-            href="https://github.com/johnbaumann/NOTPSXSerial/"
-            rel="nofollow">nops</a>. </li>
-      </ul>
-      <dl>
-        <dt>Con's-</dt>
-        <dd> <br>
-        </dd>
-      </dl>
-      <ul>
-        <li>Not having float support means, it's not a complete
-          replacement. </li>
-        <li>While this GCC is modern, using modern features will break
-          backwards (Net Yaroze GCC or Code Warrior) compatibility,
-          recommend also installing the previously mentioned toolchains,
-          to test and confirm compatibility if required. </li>
-      </ul>
-      <p class="vspace">Follow the most excellent video instructions to
-        get started. </p>
-      <table width="90%" align="center" border="0">
-        <tbody>
-          <tr>
-            <td>&nbsp;</td>
-            <td class="right"><span class="embed" style="width: 100%;
-                height: 600px;"> <iframe
-                  src="https://www.youtube-nocookie.com/embed/KbAv-Ao7lzU"
-                  style="border: 1px solid black; display: block; width:
-                  100%; height: 600px;"
-                  webkitallowfullscreen="webkitallowfullscreen"
-                  mozallowfullscreen="mozallowfullscreen"
-                  msallowfullscreen="msallowfullscreen"
-                  oallowfullscreen="oallowfullscreen"
-                  allowfullscreen="allowfullscreen"></iframe></span><br>
-            </td>
-            <td>&nbsp;</td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="text-align: center;"><strong> <a target="_blank"
-            class="urllink"
-            href="https://www.youtube.com/watch?v=KbAv-Ao7lzU"
-            rel="nofollow">PSX.Dev Visual Studio Code Extension for PS1
-            Homebrew development, by Nicolas Noble.</a> </strong> </p>
-      <p class="vspace">Run the Psy-Q template demo as per the video.
-        Make sure it builds, runs and step debug correctly. I don't
-        recommend installing clangd and the C++ extension, get used to
-        everything first then maybe add it later. Only the Psy-Q
-        template is required for Net Yaroze. </p>
-      <h3 id="PSX.DEV_Net_Yaroze_project">Basic PSX.DEV Net Yaroze
-        template instructions.<br>
-      </h3>
-      <ol>
-        <li>In Visual Code, hit CTRL + Shift + P, select PSX.DEV Show
-          panel, click the TEMPLATES tab. </li>
-        <li>Enter the name and path of your project and click Psy-Q SDK
-          tab, then click create in the Net Yaroze section, to create
-          the new template project.</li>
-        <li>The Net Yaroze template copies the Psy-Q SDK (libraries and
-          headers) in the project folder, with the modified <a
-            href="https://github.com/gwald/psyq_to_netyaroze"
-            target="_blank" moz-do-not-send="true">Net Yaroze headers</a>
-          and creates a demo program <a moz-do-not-send="true"
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>PSX.Dev Visual Studio Code Extension for Net Yaroze</title>
+</head>
+<body>
+<div class="b3-fullpost">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<h2 id="PSX.Dev_Visual_Studio_Code_Extension">PSX.Dev Visual
+Studio Code Extension</h2>
+<p class="vspace">The <a target="_blank" class="urllink"
+href="https://psx.dev" rel="nofollow">PSX.Dev</a> community
+have extracted the professional (Psy-Q) libraries and made them
+usable with a modern GCC compiler and debugger. They are also
+maintaining the PS1 emulator <a target="_blank" class="urllink"
+href="https://github.com/grumpycoders/pcsx-redux"
+rel="nofollow">PCSX-REDUX</a> which also allows GDB to step
+through code. And they have combined all these projects into a
+simple Visual Studio code extension. </p>
+<p class="vspace">From early testing, it does not support float's
+or any functions which uses them. </p>
+<p class="vspace">Net Yaroze, being a cut down version of the
+professional SDK, it is relatively simple to create a Net Yaroze
+compatible project. </p>
+<dl>
+<dt>Pro's-</dt>
+<dd> <br>
+</dd>
+</dl>
+<ul>
+<li>Modern OS (Linux and Windows), toolchain and IDE. </li>
+<li>Visual step debugger via PCSX-REDUX or a real PlayStation
+using <a target="_blank" class="urllink"
+href="https://github.com/johnbaumann/NOTPSXSerial/"
+rel="nofollow">nops</a>. </li>
+</ul>
+<dl>
+<dt>Con's-</dt>
+<dd> <br>
+</dd>
+</dl>
+<ul>
+<li>Not having float support means, it's not a complete
+replacement. </li>
+<li>While this GCC is modern, using modern features will break
+backwards (Net Yaroze GCC or Code Warrior) compatibility,
+recommend also installing the previously mentioned toolchains,
+to test and confirm compatibility if required. </li>
+</ul>
+<p class="vspace">Follow the most excellent video instructions to
+get started. </p>
+<table width="90%" align="center" border="0">
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td class="right"><span class="embed" style="width: 100%;
+height: 600px;"> <iframe
+src="https://www.youtube-nocookie.com/embed/KbAv-Ao7lzU"
+style="border: 1px solid black; display: block; width:
+100%; height: 600px;"
+webkitallowfullscreen="webkitallowfullscreen"
+mozallowfullscreen="mozallowfullscreen"
+msallowfullscreen="msallowfullscreen"
+oallowfullscreen="oallowfullscreen"
+allowfullscreen="allowfullscreen"></iframe></span><br>
+</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;"><strong> <a target="_blank"
+class="urllink"
+href="https://www.youtube.com/watch?v=KbAv-Ao7lzU"
+rel="nofollow">PSX.Dev Visual Studio Code Extension for PS1
+Homebrew development, by Nicolas Noble.</a> </strong> </p>
+<p class="vspace">Run the Psy-Q Cube template demo first as per
+the video. Make sure it builds, runs and step debug correctly.
+Installing clangd is also recommended. Only the Psy-Q template
+is required for Net Yaroze. </p>
+<h3 id="PSX.DEV_Net_Yaroze_project">Basic PSX.DEV Net Yaroze
+template instructions.<br>
+</h3>
+<ol>
+<li>In Visual Code, hit <b>CTRL + Shift + P</b>, select PSX.DEV
+Show panel, click the TEMPLATES tab. </li>
+<li>Enter the name and path of your project and click Psy-Q SDK
+tab, then click create in the Net Yaroze section, to create
+the new template project.</li>
+<li>The Net Yaroze template copies the Psy-Q SDK (libraries and
+headers) in the project folder, with the modified <a
+href="https://github.com/gwald/psyq_to_netyaroze"
+moz-do-not-send="true">Net Yaroze headers</a> and creates a
+demo program <a moz-do-not-send="true"
 href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">originally
 
-            from here</a> and it should automatically load the new
-          project into Visual Code.<br>
-        </li>
-        <li>Now we are ready to run and debug, Hit <b>CTRL + Shift + P</b>
-          and select <b>PSX.DEV: Build Debug</b>, it should build
-          correctly with no warnings or errors, and a XXX.ps-exe file,
-          where XXX is your project name should have been created. </li>
-        <li>Hit <b>CTRL + Shift + P</b> again and select <b>PSX.Dev:
-            Launch </b><b>PCSX-Redux</b>, this will launch the emulator
-          but it will not start. </li>
-        <li>Return to Visual Code and hit <b>F5</b> to start the
-          debugger, step over a few lines and loop through the <i>while(
 
-            !DONE )</i> loop, put a break point after the <b>if(
-            PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
-          about line 56. Next click run, to return to the step debugger,
-          simply hit a the up button on the controller. Close the
-          emulator to stop debugging. </li>
-      </ol>
-      <br>
-      <h3>Changing the linker settings.</h3>
-      <br>
-      The Net Yaroze linker setting are defined typically like:<br>
-      <b>-Xlinker -Ttext -Xlinker 80090000 </b><br>
-      <br>
-      Where 80090000 is the RAM location that the executable is loaded
-      to.<br>
-      <br>
-      In PSX.DEV the default is 0x80010000 (PSX RAM address is from
-      0x80010000 to 0x801fffff).<br>
-      Loading at 0x80010000 is a problem for Net Yaroze programs because
-      that's the location of the Net Yaroze libps.exe file (like a DLL
-      which makes executables smaller to transfer over serial - See
-      Memory Map in the <a moz-do-not-send="true"
+from here</a> and it should automatically load the new
+project into Visual Code.<br>
+</li>
+<li>Now we are ready to run and debug, Hit <b>CTRL + Shift + P</b>
+and select <b>PSX.DEV: Build Debug</b>, it should build
+correctly with no warnings or errors, and a XXX.ps-exe file,
+where XXX is your project name should have been created. </li>
+<li>Hit <b>CTRL + Shift + P</b> again and select <b>PSX.Dev:
+Launch </b><b>PCSX-Redux</b>, this will launch the emulator
+but it will not start. </li>
+<li>Return to Visual Code and hit <b>F5</b> to start the
+debugger, step over a few lines and loop through the <i>while(
+
+
+
+!DONE )</i> loop, put a break point after the <b>if(
+PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
+
+
+
+about line 86. Next click run, to return to the step debugger,
+simply hit the up button on the controller. Close the emulator
+to stop debugging. </li>
+</ol>
+<br>
+<h3>Changing the linker settings.</h3>
+<br>
+The Net Yaroze linker setting are defined typically like:<br>
+<b>-Xlinker -Ttext -Xlinker 80090000 </b><br>
+<br>
+Where 0x80090000 is the RAM location that the executable is loaded
+to.<br>
+<br>
+In PSX.DEV the default is 0x80010000 (PSX RAM address is from
+0x80010000 to 0x801fffff).<br>
+Loading at 0x80010000 is a problem for Net Yaroze programs because
+that's the location of the Net Yaroze libps.exe file (like a DLL
+which makes executables smaller to transfer over serial - See
+Memory Map in the <a moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/38/mode/1up">Net
-        Yaroze User Guide PDF</a> for more information).<br>
-      We need to change it to the first RAM available us which is
-      0x80090000 (loaded high), so add this line as the first LDFLAGS
-      line in the makefile:
-      <br>
-      <b>LDFLAGS=-Xlinker --defsym=TLOAD_ADDR=0x80090000 <br>
-        <br>
-      </b>But the executable can be loaded anywhere in the PlayStation's
-      RAM. For example the executable can be loaded after the data files
-      (loaded low). Some of the data that has already been moved to
-      other RAM types (TIM's to video RAM and VB's to audio RAM) can be
-      reclaimed and the heap can be set at the start of this RAM, and
-      grows down, set up via InitHeap.<br>
-      <br>
-      <h3>Replicating the Net Yaroze Siocons script.</h3>
-      <br>
-      Siocons is a DOS terminal program to interact with the Net Yaroze
-      boot disc.<br>
-      It can mostly be automated by using a batch script file (typically
-      .sio or .bat) which loads data files to the PlayStation at
-      specific RAM addresses.<br>
-      Maintaining these addresses sequentially and saving space is a
-      pain and it's recommended that the siocons script file be
-      automatically generated using a tool like: <a
-        moz-do-not-send="true" href="https://github.com/gwald/YOC">https://github.com/gwald/YOC</a><br>
-      <br>
-      <br>
-      This siocons script is also used by <a moz-do-not-send="true"
-        href="https://github.com/gwald/Yarexe">yarexe</a> to package all
-      the files into a single PS-X executable file, which makes it
-      easier to run, burn etc.<br>
-      <br>
-      <p class="vspace">In a real world project, you would load your
-        assets into RAM via the siocons script, in PSX.DEV the debugger
-        has to pre-loaded the assets into the correct RAM address when
-        pressing F5. This is done via the file in your project folder: <br>
-        <b>.vscode\launch.json</b> </p>
-      <p class="vspace">You would add your assets a similar way to the
-        siocons script, ie: <br>
-        <br>
-        <b>local dload data\OPTIONS.TIM 0x801292E8 </b><b><br>
-        </b><b> local dload data\SWORD.TIM 0x8012A508 </b><b><br>
-        </b><b> local load main.exe </b><b><br>
-        </b><b> go </b></p>
-      In the <b>.vscode\launch.json</b> file, the <b>autorun</b>
-      section, the equivalent would be:
-      <pre class="escaped"><b>"restore data/OPTIONS.TIM  binary 0x801292E8",
-"restore data/SWORD.TIM  binary 0x8012A508",
-"load ${workspaceRootFolderName}.elf"
+
+
+Yaroze User Guide PDF</a> which is up side down).<br>
+We need to change it to the first RAM available to us which is
+0x80090000 (loaded high), so add this line as the first LDFLAGS
+line in the makefile: <br>
+<b>LDFLAGS=-Xlinker --defsym=TLOAD_ADDR=0x80090000 <br>
+<br>
+</b>But the executable can be loaded anywhere in the PlayStation's
+RAM. For example the executable can be loaded after the data files
+(loaded low). Some of the data that has already been moved to
+other RAM types (TIM's to video RAM and VB's to audio RAM) can be
+reclaimed and the heap can be set at the start of this RAM, and
+grows down, set up via InitHeap.<br>
+<br>
+<h3>Replicating the Net Yaroze Siocons script.</h3>
+<br>
+Siocons is a DOS terminal program which interacts with the Net
+Yaroze boot disc.<br>
+It can mostly be automated by using a batch script file (typically
+.sio or .bat) which loads data files to the PlayStation at
+specific RAM addresses. Maintaining these addresses sequentially
+and saving space is a pain and it's recommended that the siocons
+script file be automatically generated using a tool like <a
+moz-do-not-send="true" href="https://github.com/gwald/YOC">YOC</a>
+which also creates a header file. <br>
+<br>
+This siocons script is also used by <a moz-do-not-send="true"
+href="https://github.com/gwald/Yarexe">yarexe</a> to package all
+the files into a single PS-X executable file, which makes it
+easier to run, burn etc.<br>
+<br>
+<p class="vspace">In a real Net Yaroze project, you would load
+your data assets into RAM via the siocons script, in PSX.DEV the
+debugger has to pre-loaded the assets into the correct RAM
+address when pressing F5. This is done via the file in your
+project folder: <br>
+<b>.vscode\launch.json</b> </p>
+<p class="vspace">You would add your assets a similar way to the
+siocons script, ie: <br>
+<br>
+<b>local dload data\OPTIONS.TIM 0x801292E8 </b><b><br>
+</b><b> local dload data\SWORD.TIM 0x8012A508 </b><b><br>
+</b><b> local load main.exe </b><b><br>
+</b><b> go </b></p>
+In the <b>.vscode\launch.json</b> file, the <b>autorun</b>
+section, the equivalent would be:
+<pre class="escaped"><b>"restore data/OPTIONS.TIM binary 0x801292E8",
+"restore data/SWORD.TIM binary 0x8012A508",
+"load ${workspaceRootFolderName}.elf",
 "tbreak main",
 "continue"</b>
 </pre>
-      Recommend using the Unix/Linux forward slash in windows also.<br>
-      <p class="vspace">Differences:<br>
-        Psy-Q requires the libGS libraries to be initialize with a
-        GsInitGraph call FIRST before using functions like FntLoad.</p>
-      <hr> </div>
-  </body>
+Recommended to use the Unix/Linux forward slash in windows also.<br>
+<h3>Tips</h3>
+<p class="vspace">Psy-Q requires the libGS libraries to be
+initialize with a GsInitGraph call <b>FIRST</b> before using
+functions like FntLoad.<br>
+</p>
+<h3 class="vspace">Support<br>
+</h3>
+<p class="vspace">If you find problems or erros, please raise an
+issue here:<br>
+<br>
+<a moz-do-not-send="true"
+href="https://github.com/gwald/psyq_to_netyaroze/issues">https://github.com/gwald/psyq_to_netyaroze/issues<br>
+</a></p>
+<a moz-do-not-send="true"
+href="https://github.com/gwald/psyq_to_netyaroze/issues"> </a>
+<hr> </div>
+</body>
 </html>
+
