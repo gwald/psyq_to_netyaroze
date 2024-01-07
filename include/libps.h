@@ -17,6 +17,7 @@
 // libps.h differences:
 // Put inbetween #ifndef _LIBPS_H_
 // Removed extern from all function prototypes.
+// Fixed FntPrint & KanjiFntPrint prototypes.
 // Note: GsInitGraph must be called FIRST before using libGS functions like FntLoad
 // Added this to brigde from Net Yaroze to PSY-Q
 #include <ny_psyq.h>
@@ -412,6 +413,10 @@ u_short GetClut(int x, int y) ;
 u_short GetTPage(int tp, int abr, int x, int y) ;
 void FntLoad(int tx, int ty);
 void SetDispMask(int mask);
+// bad prototypes
+// extern int FntPrint();
+// extern int KanjiFntPrint();
+// correct prototypes
 int FntPrint(int id, char *, ...);
 int KanjiFntPrint(int id, char *, ...);
 void    GsInit3D(void);
