@@ -75,11 +75,11 @@ rel="nofollow">PSX.Dev Visual Studio Code Extension for PS1
 Homebrew development, by Nicolas Noble.</a> </strong> </p>
 <p class="vspace">Run the Psy-Q Cube template demo first as per
 the video. Make sure it builds, runs and step debug correctly.
-Installing clangd is also recommended. Only the Psy-Q template
-is required for Net Yaroze. </p>
+Installing clangd is also recommended. <br>
+</p>
 <h3 id="PSX.DEV_Net_Yaroze_project">Basic PSX.DEV Net Yaroze
-template instructions.<br>
-</h3>
+template instructions.</h3>
+<p>This Net Yaroze template requires the Psy-Q and nugget tools.</p>
 <ol>
 <li>In Visual Code, hit <b>CTRL + Shift + P</b>, select PSX.DEV
 Show panel, click the TEMPLATES tab. </li>
@@ -95,13 +95,14 @@ href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">or
 
 
 
+
 from here</a> and it should automatically load the new
 project into Visual Code.<br>
 </li>
 <li>Now we are ready to run and debug, Hit <b>CTRL + Shift + P</b>
 and select <b>PSX.DEV: Build Debug</b>, it should build
 correctly with no warnings or errors, and a XXX.ps-exe file,
-where XXX is your project name should have been created. </li>
+(where XXX is your project name) should have been created. </li>
 <li>Hit <b>CTRL + Shift + P</b> again and select <b>PSX.Dev:
 Launch </b><b>PCSX-Redux</b>, this will launch the emulator
 but it will not start. </li>
@@ -110,14 +111,19 @@ debugger, step over a few lines and loop through the <i>while(
 
 
 
+
 !DONE )</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
 
 
-about line 86. Next click run, to return to the step debugger,
-simply hit the up button on the controller. Close the emulator
-to stop debugging. </li>
+
+about line 86. <br>
+</li>
+<li>Next click run, to return to the step debugger, simply hit
+the up button on the controller. <br>
+</li>
+<li>Close the emulator to stop debugging. </li>
 </ol>
 <br>
 <h3>Changing the linker settings.</h3>
@@ -135,6 +141,7 @@ that's the location of the Net Yaroze libps.exe file (like a DLL
 which makes executables smaller to transfer over serial - See
 Memory Map in the <a moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/38/mode/1up">Net
+
 
 
 Yaroze User Guide PDF</a> which is up side down).<br>
@@ -188,15 +195,44 @@ section, the equivalent would be:
 "tbreak main",
 "continue"</b>
 </pre>
-Recommended to use the Unix/Linux forward slash in windows also.<br>
-<h3>Tips</h3>
+Windows uses are recommended to use the Unix/Linux forward slash
+also.<br>
+<h3>Tips &amp; Notes<br>
+</h3>
 <p class="vspace">Psy-Q requires the libGS libraries to be
 initialize with a GsInitGraph call <b>FIRST</b> before using
 functions like FntLoad.<br>
 </p>
+<p class="vspace">Modern GCC is very strict, make sure all your
+functions that return a value, does returns a value.<br>
+</p>
+<p class="vspace">Both FntPrint and KanjiFntPrint prototypes were
+empty<u> </u>in libps.h this was incorrect and are correctly
+defined as:<br>
+int FntPrint(int id, char *, ...);<br>
+int KanjiFntPrint(int id, char *, ...);<br>
+<br>
+</p>
 <h3 class="vspace">Support<br>
 </h3>
-<p class="vspace">If you find problems or erros, please raise an
+<p class="vspace">The Psy-Q to Net Yaroze glue (psyq_to_netyaroze)
+is still Work In Progress.<br>
+There are a few things missing or not working, these are
+typically:<br>
+</p>
+<p class="vspace">1) Compiler built-in functions (exit, abort,
+etc) - If you come across a C language function that doesn't
+work, test it in the Psy-Q Cube demo to verify it works first,
+if it doesn't work then it mostly like a <a
+moz-do-not-send="true"
+href="https://github.com/pcsx-redux/nugget">Psy-Q Nugget</a>
+issue;</p>
+<p class="vspace">2) or Net Yaroze only helper functions like
+TestCard, GetPadBuf and not found in Psy-Q.<br>
+</p>
+<p class="vspace"><br>
+</p>
+<p class="vspace">If you find problems or errors, please raise an
 issue here:<br>
 <br>
 <a moz-do-not-send="true"
@@ -207,4 +243,3 @@ href="https://github.com/gwald/psyq_to_netyaroze/issues"> </a>
 <hr> </div>
 </body>
 </html>
-
