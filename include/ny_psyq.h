@@ -2,11 +2,17 @@
 #ifndef _NET_YAROZE_TO_PSYQ_GLUE_
 #define _NET_YAROZE_TO_PSYQ_GLUE_
 
+// needed for exit()
+#define _WCHAR_T
+#include <stdlib.h>
+
+// needed for exit(1)
+#define exit( _ARGS_ ) exit()
+
+
 // Net Yaroze implementation of:
 // TestCard - TODO
 // GetPadBuf - working
-
-#define exit( _ARGS_ ) printf("exit not yet implemented: line: %d  %s\n", __LINE__, __FILE__ );
 
 /*
  * Prototypes
