@@ -9,6 +9,9 @@
 // needed for exit(1)
 #define exit( _ARGS_ ) exit()
 
+// needed for abort()
+#define abort( _ARGS_ ) exit()
+
 
 // Net Yaroze implementation of:
 // TestCard - TODO
