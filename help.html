@@ -17,38 +17,10 @@ href="https://github.com/grumpycoders/pcsx-redux"
 rel="nofollow">PCSX-REDUX</a> which also allows GDB to step
 through code. And they have combined all these projects into a
 simple Visual Studio code extension. </p>
-<p class="vspace">From early testing, it does not support float's
-or any functions which uses them. </p>
 <p class="vspace">Net Yaroze, being a cut down version of the
 professional SDK, it is relatively simple to create a Net Yaroze
 compatible project. </p>
-<dl>
-<dt>Pro's-</dt>
-<dd> <br>
-</dd>
-</dl>
-<ul>
-<li>Modern OS (Linux and Windows), toolchain and IDE. </li>
-<li>Visual step debugger via PCSX-REDUX or a real PlayStation
-using <a target="_blank" class="urllink"
-href="https://github.com/johnbaumann/NOTPSXSerial/"
-rel="nofollow">nops</a>. </li>
-</ul>
-<dl>
-<dt>Con's-</dt>
-<dd> <br>
-</dd>
-</dl>
-<ul>
-<li>Not having float support means, it's not a complete
-replacement. </li>
-<li>While this GCC is modern, using modern features will break
-backwards (Net Yaroze GCC or Code Warrior) compatibility,
-recommend also installing the previously mentioned toolchains,
-to test and confirm compatibility if required. </li>
-</ul>
-<p class="vspace">Follow the most excellent video instructions to
-get started. </p>
+Follow the most excellent video instructions to get started.
 <table width="90%" align="center" border="0">
 <tbody>
 <tr>
@@ -77,9 +49,11 @@ Homebrew development, by Nicolas Noble.</a> </strong> </p>
 the video. Make sure it builds, runs and step debug correctly.
 Installing clangd is also recommended. <br>
 </p>
-<h3 id="PSX.DEV_Net_Yaroze_project">Basic PSX.DEV Net Yaroze
-template instructions.</h3>
-<p>This Net Yaroze template requires the Psy-Q and nugget tools.</p>
+<h3 id="PSX.DEV_Net_Yaroze_project">The Net Yaroze template.</h3>
+<p>This Net Yaroze template requires the Psy-Q and nugget tools,
+if you ran the Psy-Q Cube demo, there's nothing else to install.<br>
+The instructions are the same as per the Psy-Q Cube demo:<br>
+</p>
 <ol>
 <li>In Visual Code, hit <b>CTRL + Shift + P</b>, select PSX.DEV
 Show panel, click the TEMPLATES tab. </li>
@@ -97,8 +71,9 @@ href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">or
 
 
 from
-here</a> and it should automatically load the new
-project into Visual Code.<br>
+
+here</a>. It should automatically load the new project into
+Visual Code.<br>
 </li>
 <li>Now we are ready to run and debug, Hit <b>CTRL + Shift + P</b>
 and select <b>PSX.DEV: Build Debug</b>, it should build
@@ -114,6 +89,7 @@ debugger, step over a few lines and loop through the <i>while(
 
 
 !DONE
+
 )</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
@@ -121,6 +97,7 @@ PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
 
 about
+
 line 86. <br>
 </li>
 <li>Next click run, to return to the step debugger, simply hit
@@ -137,8 +114,8 @@ The Net Yaroze linker setting are defined typically like:<br>
 Where 0x80090000 is the RAM location that the executable is loaded
 to.<br>
 <br>
-In PSX.DEV the default is 0x80010000 (PSX RAM address is from
-0x80010000 to 0x801fffff).<br>
+In PSX.DEV the default is 0x80010000 (PSX RAM address range is
+from 0x80010000 to 0x801fffff).<br>
 Loading at 0x80010000 is a problem for Net Yaroze programs because
 that's the location of the Net Yaroze libps.exe file (like a DLL
 which makes executables smaller to transfer over serial - See
@@ -148,18 +125,17 @@ href="https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/3
 
 
 Yaroze
-User Guide PDF</a> which is up side down).<br>
-We need to change it to the first RAM available to us which is
-0x80090000 (loaded high), so add this line as the first LDFLAGS
+
+User Guide PDF</a>).<br>
+We need to change it to the first RAM available to us, which is
+after libps.exe, 0x80090000 (loaded low).<br>
+To do this with PSX.DEV's GCC, add this line as the first LDFLAGS
 line in the makefile: <br>
 <b>LDFLAGS=-Xlinker --defsym=TLOAD_ADDR=0x80090000 <br>
 <br>
 </b>But the executable can be loaded anywhere in the PlayStation's
-RAM. For example the executable can be loaded after the data files
-(loaded low). Some of the data that has already been moved to
-other RAM types (TIM's to video RAM and VB's to audio RAM) can be
-reclaimed and the heap can be set at the start of this RAM, and
-grows down, set up via InitHeap.<br>
+RAM. For example the executable can be loaded after the assets or
+data files, loaded higher in RAM. <br>
 <br>
 <h3>Replicating the Net Yaroze Siocons script.</h3>
 <br>
@@ -201,18 +177,38 @@ section, the equivalent would be:
 </pre>
 Windows uses are recommended to use the Unix/Linux forward slash
 also.<br>
+<br>
+<br>
+<br>
+<h3>
+Reusing asset RAM</h3>
+If you only load your assets once in your program (which is
+typical for Net Yaroze) and you organize your files correctly,
+then after they have been copied to their respective places ie
+TIM's to video RAM and VB's to audio RAM and initialized
+correctly, their original RAM space can then be reclaimed by your
+program for anything, ie game logic etc or by initializing the
+heap (via InitHeap) to start at the top of this RAM space (which
+then grows upwards).<br>
+<br>
+Obviously you can not reclaim RAM space of files that are still
+required to be in RAM, ie TMD's.<br>
+<br>
+<br>
+<br>
 <h3>Tips &amp; Notes<br>
 </h3>
 <p class="vspace">Psy-Q requires the libGS libraries to be
 initialize with a GsInitGraph call <b>FIRST</b> before using
-functions like FntLoad.<br>
+other libGS functions, in particular FntLoad.<br>
 </p>
-<p class="vspace">Modern GCC is very strict, make sure all your
-functions that return a value, does returns a value.<br>
+<p class="vspace">Modern GCC can be very strict, make sure all
+your functions that return a value, does return a value, this is
+especially true when debugging using GDB.<br>
 </p>
 <p class="vspace">Both FntPrint and KanjiFntPrint prototypes were
-empty<u> </u>in libps.h this was incorrect and are correctly
-defined as:<br>
+empty in libps.h this was incorrect and are correctly defined
+as:<br>
 int FntPrint(int id, char *, ...);<br>
 int KanjiFntPrint(int id, char *, ...);<br>
 <br>
@@ -232,7 +228,7 @@ moz-do-not-send="true"
 href="https://github.com/pcsx-redux/nugget">Psy-Q conversion</a>
 issue;</p>
 <p class="vspace">2) or Net Yaroze only helper functions like
-TestCard, GetPadBuf and not found in Psy-Q.<br>
+TestCard, GetPadBuf which are not found in Psy-Q.<br>
 </p>
 <p class="vspace"><br>
 </p>
@@ -247,4 +243,3 @@ href="https://github.com/gwald/psyq_to_netyaroze/issues"> </a>
 <hr> </div>
 </body>
 </html>
-
