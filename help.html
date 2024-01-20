@@ -72,6 +72,7 @@ href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">or
 
 from
 
+
 here</a>. It should automatically load the new project into
 Visual Code.<br>
 </li>
@@ -90,6 +91,7 @@ debugger, step over a few lines and loop through the <i>while(
 
 !DONE
 
+
 )</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
@@ -97,6 +99,7 @@ PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
 
 about
+
 
 line 86. <br>
 </li>
@@ -106,6 +109,9 @@ the up button on the controller. <br>
 <li>Close the emulator to stop debugging. </li>
 </ol>
 <br>
+<hr width="100%" size="2">
+<h3><br>
+</h3>
 <h3>Changing the linker settings.</h3>
 <br>
 The Net Yaroze linker setting are defined typically like:<br>
@@ -126,6 +132,7 @@ href="https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/3
 
 Yaroze
 
+
 User Guide PDF</a>).<br>
 We need to change it to the first RAM available to us, which is
 after libps.exe, 0x80090000 (loaded low).<br>
@@ -137,12 +144,14 @@ line in the makefile: <br>
 RAM. For example the executable can be loaded after the assets or
 data files, loaded higher in RAM. <br>
 <br>
+<br>
+<hr width="100%" size="2"><br>
 <h3>Replicating the Net Yaroze Siocons script.</h3>
 <br>
-Siocons is a DOS terminal program which interacts with the Net
-Yaroze boot disc.<br>
+Siocons is a DOS terminal program which can send and receive data
+from the Net Yaroze after it has load the Net Yaroze boot disc.<br>
 It can mostly be automated by using a batch script file (typically
-.sio or .bat) which loads data files to the PlayStation at
+.sio, .auto or .bat) which loads data files to the PlayStation at
 specific RAM addresses. Maintaining these addresses sequentially
 and saving space is a pain and it's recommended that the siocons
 script file be automatically generated using a tool like <a
@@ -157,31 +166,47 @@ easier to run, burn etc.<br>
 <p class="vspace">In a real Net Yaroze project, you would load
 your data assets into RAM via the siocons script, in PSX.DEV the
 debugger has to pre-loaded the assets into the correct RAM
-address when pressing F5. This is done via the file in your
-project folder: <br>
-<b>.vscode\launch.json</b> </p>
+address when pressing F5. This is done via <b>.vscode\launch.json</b>
+in your project folder. </p>
 <p class="vspace">You would add your assets a similar way to the
 siocons script, ie: <br>
 <br>
-<b>local dload data\OPTIONS.TIM 0x801292E8 </b><b><br>
-</b><b> local dload data\SWORD.TIM 0x8012A508 </b><b><br>
-</b><b> local load main.exe </b><b><br>
-</b><b> go </b></p>
+</p>
+<table width="576" height="120" cellspacing="2" cellpadding="2"
+border="1">
+<tbody>
+<tr>
+<td valign="top"><b>local dload data\OPTIONS.TIM 0x801292E8
+</b><br>
+<b> </b><b> local dload data\SWORD.TIM 0x8012A508 </b><br>
+<b> </b><b> </b>local load y3d.ps-exe<br>
+go</td>
+</tr>
+</tbody>
+</table>
+<p class="vspace"><br>
 In the <b>.vscode\launch.json</b> file, the <b>autorun</b>
-section, the equivalent would be:
-<pre class="escaped"><b>"restore data/OPTIONS.TIM binary 0x801292E8",
-"restore data/SWORD.TIM binary 0x8012A508",
-"load ${workspaceRootFolderName}.elf",
-"tbreak main",
-"continue"</b>
-</pre>
+section, the above equivalent would be:<br>
+</p>
+<br>
+<table width="795" height="277" cellspacing="2" cellpadding="2"
+border="1">
+<tbody>
+<tr>
+<td valign="top">
+<pre class="escaped"><br>&nbsp;"autorun": [<br> "monitor reset shellhalt",<br><b> "restore data/OPTIONS.TIM binary 0x801292E8",
+"restore data/SWORD.TIM binary 0x8012A508",<br></b> "load ${workspaceRootFolderName}.elf",<br> "tbreak main",<br> "continue"<br> ]</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="escaped"><br></pre>
 Windows uses are recommended to use the Unix/Linux forward slash
 also.<br>
 <br>
 <br>
-<br>
-<h3>
-Reusing asset RAM</h3>
+<hr width="100%" size="2"><br>
+<h3> Reusing asset RAM</h3>
 If you only load your assets once in your program (which is
 typical for Net Yaroze) and you organize your files correctly,
 then after they have been copied to their respective places ie
@@ -194,8 +219,7 @@ then grows upwards).<br>
 Obviously you can not reclaim RAM space of files that are still
 required to be in RAM, ie TMD's.<br>
 <br>
-<br>
-<br>
+<hr width="100%" size="2"><br>
 <h3>Tips &amp; Notes<br>
 </h3>
 <p class="vspace">Psy-Q requires the libGS libraries to be
@@ -212,6 +236,9 @@ as:<br>
 int FntPrint(int id, char *, ...);<br>
 int KanjiFntPrint(int id, char *, ...);<br>
 <br>
+</p>
+<hr width="100%" size="2">
+<p class="vspace"><br>
 </p>
 <h3 class="vspace">Support<br>
 </h3>
