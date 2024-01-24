@@ -66,9 +66,9 @@ href="https://github.com/gwald/psyq_to_netyaroze"
 moz-do-not-send="true">Net Yaroze headers</a> and creates a
 demo program <a moz-do-not-send="true"
 href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">originally
-from
-here</a>. It should automatically load the new project into
-Visual Code.<br>
+
+from here</a>. It should automatically load the new project
+into Visual Code.<br>
 </li>
 <li>Now we are ready to run and debug, Hit <b>CTRL + Shift + P</b>
 and select <b>PSX.DEV: Build Debug</b>, it should build
@@ -79,8 +79,8 @@ Launch </b><b>PCSX-Redux</b>, this will launch the emulator
 but it will not start. </li>
 <li>Return to Visual Code and hit <b>F5</b> to start the
 debugger, step over a few lines and loop through the <i>while(
-!DONE
-)</i> loop, put a break point after the <b>if(
+
+!DONE )</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
 
@@ -92,6 +92,7 @@ about
 
 
 line
+
 86. <br>
 </li>
 <li>Next click run, to return to the step debugger, simply hit
@@ -127,6 +128,7 @@ Yaroze
 
 
 User
+
 Guide PDF</a>).<br>
 We need to change it to the first RAM available to us, which is
 after libps.exe, 0x80090000 (loaded low).<br>
@@ -208,12 +210,16 @@ also.<br>
 <p class="vspace">The Net Yaroze boot disc (<a
 moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-cip2.2-boot-disc-exe-cart-rom">there
-are several versions available</a>) has a few generic
-assets that can be load and used in your games.<br>
+
+are several versions available</a>) has a few generic assets
+that can be load and used in your games.<br>
 And contrary to common belief, the Net Yaroze SDK can read data
-files from the CDROM, but it can only be official PlayStation
-CDROM's, which basically means the Net Yaroze boot disc, which
-does come with a few useful game ready assets.<br>
+files from the CDROM.<br>
+On a real Net Yaroze PlayStation, it can only be official
+PlayStation CDROM's, which basically means the Net Yaroze boot
+disc, which does come with a few useful game ready assets. But
+with a chipped PlayStation or emulator it can read any
+PlayStation formatted CDROM.<br>
 </p>
 <p class="vspace">Quick description of the file types:</p>
 <p class="vspace">.TIM&nbsp; - Image format, after loading the TIM
@@ -228,12 +234,14 @@ into Audio RAM, the RAM space can be reused.<br>
 <tbody>
 <tr>
 <td valign="top">Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
 </td>
 <td valign="top">About<br>
 </td>
 <td valign="top">size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 <br>
 </td>
 </tr>
@@ -396,7 +404,7 @@ loading of the assets from the siocons script. <br>
 In the <b>.vscode\launch.json</b> file, the <b>autorun</b>
 section:<br>
 <br>
-<table width="795" height="277" cellspacing="2" cellpadding="2"
+<table width="673" height="277" cellspacing="2" cellpadding="2"
 border="1">
 <tbody>
 <tr>
@@ -406,18 +414,17 @@ border="1">
 </tr>
 </tbody>
 </table>
-<pre class="escaped"><br><b>Playing CD Digital Audio<br></b><br><br>The Net Yaroze can also play audio CD tracks( CD-DA - CD Digital Audio), and are played in the background without any CPU resources.<br>This can be done by using the CUE/BIN files instead of just the .iso image.<br>Currently, the PCSX-R emulator has an issue getting the CD-DA track listing, in Net Yaroze this is done via:<br><br></pre>
+<pre class="escaped"><br><b>Playing CD Digital Audio<br></b><br><br>The Net Yaroze can also play any audio CD tracks( CD-DA - CD Digital Audio), and are played in the background without any CPU resources.<br>This can be done by using the CUE/BIN files instead of just the .iso image.<br>Currently, the PCSX-R emulator has an issue getting the CD-DA track listing, in Net Yaroze this is done via:<br><br></pre>
 <table width="100%" cellspacing="2" cellpadding="2" border="1">
 <tbody>
 <tr>
 <td valign="top">
-<pre class="escaped">// 3 = The index of the tracks array for the track currently being played is returned. (No other action is taken.)<br>CdPlay(3, 0, 0); </pre>
+<pre class="escaped">// 3 = The index of the tracks array for the track currently being played is returned. (No other action is taken.)<br><b>CdPlay(3, 0, 0); </b></pre>
 </td>
 </tr>
 </tbody>
 </table>
-<pre class="escaped"><br>Do not call CdPlay with the parameter 3, instead hardcode your total track number and manage the currently playing track manually.<br>Playing CD-DA tracks does work as expected.<br><br><br><br>For a tutorial on reading CDROM data or playing CD digital audio see <a moz-do-not-send="true" href="https://github.com/gwald/netyaroze_demo/tree/main/tutor/chap3">chapter 3</a>.<br></pre>
-<br>
+<pre class="escaped"><br>Do not call CdPlay with the parameter 3, instead hardcode your total track number and manage the currently playing track manually.<br>Playing CD-DA tracks does work as expected.<br><br><br>For tutorials on reading CDROM data or playing CD digital audio see <a moz-do-not-send="true" href="https://github.com/gwald/netyaroze_demo/tree/main/tutor/chap3">chapter 3</a>.<br></pre>
 <br>
 <hr width="100%" size="2"><br>
 <h3> Reusing asset RAM</h3>
@@ -432,26 +439,6 @@ then grows upwards).<br>
 <br>
 Obviously you can not reclaim RAM space of files that are still
 required to be in RAM, ie TMD's.<br>
-<br>
-<br>
-<table width="100%" cellspacing="2" cellpadding="2" border="1">
-<tbody>
-<tr>
-<td valign="top"><code class="inline"><code class="inline">"autorun":
-<br>
-&nbsp; [ <br>
-&nbsp;&nbsp;&nbsp;&nbsp; "monitor mountcd test3d.iso",</code></code></td>
-</tr>
-</tbody>
-</table>
-<br>
-<code class="inline">
-<meta http-equiv="content-type" content="text/html;
-charset=UTF-8">
-<code class="inline"> </code></code><br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <hr width="100%" size="2"><br>
@@ -471,7 +458,18 @@ as:<br>
 int FntPrint(int id, char *, ...);<br>
 int KanjiFntPrint(int id, char *, ...);<br>
 <br>
+<br>
 </p>
+<hr width="100%" size="2"><br>
+<h3>TODO:<br>
+</h3>
+<b>TestCard </b>- not implemented.<br>
+<b>GsCOORDINATE2 nested parents</b> - screws the projection matrix
+somehow somewhere? - currently the fix is not to use nest parents,
+one parent seems to work fine.<br>
+<br>
+<br>
+<p class="vspace"> </p>
 <hr width="100%" size="2">
 <p class="vspace"><br>
 </p>
@@ -492,10 +490,9 @@ issue;</p>
 <p class="vspace">2) or Net Yaroze only helper functions like
 TestCard, GetPadBuf which are not found in Psy-Q.<br>
 </p>
-<p class="vspace"><br>
-</p>
-<p class="vspace">If you find problems or errors, please raise an
-issue here:<br>
+<br>
+<p class="vspace">If you have problems, errors or fixes, please
+raise an issue here:<br>
 <br>
 <a moz-do-not-send="true"
 href="https://github.com/gwald/psyq_to_netyaroze/issues">https://github.com/gwald/psyq_to_netyaroze/issues<br>
