@@ -67,6 +67,7 @@ moz-do-not-send="true">Net Yaroze headers</a> and creates a
 demo program <a moz-do-not-send="true"
 href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">originally
 
+
 from here</a>. It should automatically load the new project
 into Visual Code.<br>
 </li>
@@ -80,6 +81,7 @@ but it will not start. </li>
 <li>Return to Visual Code and hit <b>F5</b> to start the
 debugger, step over a few lines and loop through the <i>while(
 
+
 !DONE )</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
@@ -92,6 +94,7 @@ about
 
 
 line
+
 
 86. <br>
 </li>
@@ -128,6 +131,7 @@ Yaroze
 
 
 User
+
 
 Guide PDF</a>).<br>
 We need to change it to the first RAM available to us, which is
@@ -211,6 +215,7 @@ also.<br>
 moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-cip2.2-boot-disc-exe-cart-rom">there
 
+
 are several versions available</a>) has a few generic assets
 that can be load and used in your games.<br>
 And contrary to common belief, the Net Yaroze SDK can read data
@@ -235,12 +240,14 @@ into Audio RAM, the RAM space can be reused.<br>
 <tr>
 <td valign="top">Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
 </td>
 <td valign="top">About<br>
 </td>
 <td valign="top">size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 
 <br>
 </td>
@@ -414,7 +421,19 @@ border="1">
 </tr>
 </tbody>
 </table>
-<pre class="escaped"><br><b>Playing CD Digital Audio<br></b><br><br>The Net Yaroze can also play any audio CD tracks( CD-DA - CD Digital Audio), and are played in the background without any CPU resources.<br>This can be done by using the CUE/BIN files instead of just the .iso image.<br>Currently, the PCSX-R emulator has an issue getting the CD-DA track listing, in Net Yaroze this is done via:<br><br></pre>
+<pre class="escaped"><br><b>Playing CD Digital Audio<br></b><br><br>The Net Yaroze can also play any audio CD tracks( CD-DA - CD Digital Audio), and are played in the background without any CPU resources.<br>This can be done by using the CUE/BIN files instead of just the .iso image.<br><br></pre>
+<table width="673" height="277" cellspacing="2" cellpadding="2"
+border="1">
+<tbody>
+<tr>
+<td valign="top">
+<pre class="escaped"><br>&nbsp;"autorun": [<br> "monitor reset shellhalt",<br><b> "monitor mountcd Net-Yaroze-Boot-Disc.cue",<br></b> "load ${workspaceRootFolderName}.elf",<br> "tbreak main",<br> "continue"<br> ]</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<pre class="escaped">Currently, the PCSX-R emulator has an issue getting the CD-DA track listing, in Net Yaroze this is done via:<br><br></pre>
 <table width="100%" cellspacing="2" cellpadding="2" border="1">
 <tbody>
 <tr>
