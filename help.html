@@ -66,13 +66,7 @@ href="https://github.com/gwald/psyq_to_netyaroze"
 moz-do-not-send="true">Net Yaroze headers</a> and creates a
 demo program <a moz-do-not-send="true"
 href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">originally
-
-
-
-
 from
-
-
 here</a>. It should automatically load the new project into
 Visual Code.<br>
 </li>
@@ -85,13 +79,7 @@ Launch </b><b>PCSX-Redux</b>, this will launch the emulator
 but it will not start. </li>
 <li>Return to Visual Code and hit <b>F5</b> to start the
 debugger, step over a few lines and loop through the <i>while(
-
-
-
-
 !DONE
-
-
 )</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 
@@ -101,7 +89,10 @@ PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
 about
 
 
-line 86. <br>
+
+
+line
+86. <br>
 </li>
 <li>Next click run, to return to the step debugger, simply hit
 the up button on the controller. <br>
@@ -133,7 +124,10 @@ href="https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/3
 Yaroze
 
 
-User Guide PDF</a>).<br>
+
+
+User
+Guide PDF</a>).<br>
 We need to change it to the first RAM available to us, which is
 after libps.exe, 0x80090000 (loaded low).<br>
 To do this with PSX.DEV's GCC, add this line as the first LDFLAGS
@@ -201,8 +195,228 @@ border="1">
 </tbody>
 </table>
 <pre class="escaped"><br></pre>
-Windows uses are recommended to use the Unix/Linux forward slash
+Windows users are recommended to use the Unix/Linux forward slash
 also.<br>
+<br>
+<br>
+<br>
+<hr width="100%" size="2"><br>
+<h3> Accessing the disc.</h3>
+<p><br>
+<b>Reading Net Yaroze boot disc data.</b><br>
+</p>
+<p class="vspace">The Net Yaroze boot disc (<a
+moz-do-not-send="true"
+href="https://archive.org/details/net-yaroze-cip2.2-boot-disc-exe-cart-rom">there
+are several versions available</a>) has a few generic
+assets that can be load and used in your games.<br>
+And contrary to common belief, the Net Yaroze SDK can read data
+files from the CDROM, but it can only be offical PlayStation
+CDROM's, which basically means the Net Yaroze boot disc, which
+does come with a few useful game ready assets.<br>
+</p>
+<p class="vspace">Quick description of the file types:</p>
+<p class="vspace">.TIM&nbsp; - Image format, after loading the TIM
+into VRAM, the RAM space can be reused.<br>
+.SEQ - Music sequence, similar to the midi format, and must stay
+in RAM to play.<br>
+.VB&nbsp; - Voice Bank, sampled audio, after loading the VB file
+into Audio RAM, the RAM space can be reused.<br>
+.VH&nbsp; - VB index information, must remain in RAM to work.<br>
+</p>
+<table width="100%" cellspacing="2" cellpadding="2" border="1">
+<tbody>
+<tr>
+<td valign="top">Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+</td>
+<td valign="top">About<br>
+</td>
+<td valign="top">size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/FONTS/7SEGFONT.TIM</td>
+<td valign="top">Black and White, large font but limited
+characters.<br>
+</td>
+<td valign="top">256x128 8bit - 17KB<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/FONTS/8DOTFONT.TIM</td>
+<td valign="top">Black and White, small font but with more
+character (kanji and font images).</td>
+<td valign="top">256x128 8bit - 17KB</td>
+</tr>
+<tr>
+<td valign="top">/DATA/MODEL/</td>
+<td valign="top">The models are in RSD &amp; DXF formats and
+not usable without being converted first to TMD on a PC!<br>
+<br>
+AP01 - fighter jet - 480 faces<br>
+CAR - 2 door, red car (with individual parts)- 428 faces<br>
+PGIRL - purple lady with blonde hair - 1037 faces<br>
+PMAN - gray man with no hair - 948 faces<br>
+<br>
+TMD's must stay in RAM.<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/SOUND/GOGO.SEQ<br>
+</td>
+<td valign="top">Loopable, sounds like: <a
+moz-do-not-send="true"
+href="https://youtu.be/1Wf6PWm2Lns?t=108">Terra
+Incognita - intro &amp; game</a><br>
+<br>
+<br>
+</td>
+<td valign="top">1.20mins - 16.9KB<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/SOUND/MUSI.SEQ</td>
+<td valign="top">Loopable, sounds like: <a
+moz-do-not-send="true"
+href="https://youtu.be/1Wf6PWm2Lns?t=594">Terra
+Incognita - last level</a><br>
+</td>
+<td valign="top">2.22mins - 38.7KB<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/SOUND/SAMPLE1.SEQ</td>
+<td valign="top">The same file as MUSI.SEQ above<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/SOUND/STD0.VB<br>
+</td>
+<td valign="top">Sound Bank - Sound fonts instruments,
+sounds like Terra Incognita above.<br>
+</td>
+<td valign="top">391KB</td>
+</tr>
+<tr>
+<td valign="top">/DATA/SOUND/STD0.VH</td>
+<td valign="top">Sound Header - Used to reference
+sound/instruments data in sound RAM.<br>
+</td>
+<td valign="top">59KB<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FANCY</td>
+<td valign="top">18 32x32, 16x16 and 96x96 8bit patterns<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FIRE</td>
+<td valign="top">4 frames of animation fire<br>
+</td>
+<td valign="top">1.53KB each frame<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/FRAME01.TIM</td>
+<td valign="top">Small frame segments, with think and thin
+out lines, grey scale, 8bit 128x32<br>
+</td>
+<td valign="top">2.06KB<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/FRAME02.TIM</td>
+<td valign="top">Large frame segments, think lines only,
+grey scale, 8bit, 128x64<br>
+</td>
+<td valign="top">4.06KB<br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/GREEN</td>
+<td valign="top">2x Green grass and a Moss 8bit textures in
+both 64x64 and 32x32<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/METAL</td>
+<td valign="top">2x metal textures 8bit 32x32<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/STONE</td>
+<td valign="top">2x sand, 2x stone, 2x wall 8bit 32x32 and
+64x64 textures<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/TILE</td>
+<td valign="top">2x net, 6x tile (TILE01,02 are tile sets)
+8bit varying sizes<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/WAVE</td>
+<td valign="top">6x FALL (water fall) 3x WAVE water ripple)<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+<tr>
+<td valign="top">/DATA/TEXTURE/FRAME/WOODY</td>
+<td valign="top">7x wood grain textures in horizontal and
+vertical<br>
+</td>
+<td valign="top"><br>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+The debugger must first load the cdrom image, similar to the
+loading of the assets from the siocons script. <br>
+In the <b>.vscode\launch.json</b> file, the <b>autorun</b>
+section:<br>
+<br>
+<table width="795" height="277" cellspacing="2" cellpadding="2"
+border="1">
+<tbody>
+<tr>
+<td valign="top">
+<pre class="escaped"><br>&nbsp;"autorun": [<br> "monitor reset shellhalt",<br><b> "monitor mountcd Net-Yaroze-Boot-Disc.iso",<br></b> "load ${workspaceRootFolderName}.elf",<br> "tbreak main",<br> "continue"<br> ]</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="escaped"><br><b>Playing CD Digital Audio<br></b><br><br>The Net Yaroze can also play audio CD tracks( CD-DA - CD Digital Audio), and are played in the background without any CPU resources.<br>This can be done by using the CUE/BIN files instead of just the .iso image.<br>Currently, the PCSX-R emulator has an issue getting the CD-DA track listing, in Net Yaroze this is done via:<br><br></pre>
+<table width="100%" cellspacing="2" cellpadding="2" border="1">
+<tbody>
+<tr>
+<td valign="top">
+<pre class="escaped">// 3 = The index of the tracks array for the track currently being played is returned. (No other action is taken.)<br>CdPlay(3, 0, 0); </pre>
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="escaped"><br>Do not call CdPlay with the parameter 3, instead hardcode your total track number and manage the currently playing track manually.<br>Playing CD-DA tracks does work as expected.<br><br><br><br>For a tutorial on reading CDROM data or playing CD digital audio see <a moz-do-not-send="true" href="https://github.com/gwald/netyaroze_demo/tree/main/tutor/chap3">chapter 3</a>.<br></pre>
 <br>
 <br>
 <hr width="100%" size="2"><br>
@@ -218,6 +432,27 @@ then grows upwards).<br>
 <br>
 Obviously you can not reclaim RAM space of files that are still
 required to be in RAM, ie TMD's.<br>
+<br>
+<br>
+<table width="100%" cellspacing="2" cellpadding="2" border="1">
+<tbody>
+<tr>
+<td valign="top"><code class="inline"><code class="inline">"autorun":
+<br>
+&nbsp; [ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; "monitor mountcd test3d.iso",</code></code></td>
+</tr>
+</tbody>
+</table>
+<br>
+<code class="inline">
+<meta http-equiv="content-type" content="text/html;
+charset=UTF-8">
+<code class="inline"> </code></code><br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <hr width="100%" size="2"><br>
 <h3>Tips &amp; Notes<br>
