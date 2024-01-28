@@ -6,13 +6,34 @@
 <body>
 <div class="b3-fullpost">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<h1 class="vspace">PSX.Dev Visual Studio Code Extension</h1>
+<br>
+<p>
+<a href="#PSX.Dev_Visual_Studio_Code_Extension">PSX.Dev
+VisualStudio Code Extension</a><br>
+<a href="#PSX.DEV_Net_Yaroze_project">The Net Yaroze template.</a><br>
+<a href="#Changing_the_linker_settings">Changing the linker
+settings.</a><br>
+<a href="#Replicating_the_Net_Yaroze_Siocons">Replicating the
+Net Yaroze Siocons script.</a><br>
+<a href="#Accessing_the_disc">Accessing the disc</a><br>
+- <a href="#Reading_Net_Yaroze_boot_disc_data">Reading Net
+Yaroze boot disc data.</a><br>
+- <a href="#Playing_CD_Digital_Audio">Playing CD Digital Audio.</a><br>
+<a href="#Reusing_asset_RAM">Reusing asset RAM.</a><br>
+<a href="#Tips__Notes">Tips &amp; Notes</a><br>
+<a href="#TODO">TODO</a><br>
+<a href="#Support">Support</a><br>
+</p>
 <h2 id="PSX.Dev_Visual_Studio_Code_Extension">PSX.Dev Visual
 Studio Code Extension</h2>
-<p class="vspace">The <a target="_blank" class="urllink"
-href="https://psx.dev" rel="nofollow">PSX.Dev</a> community
-have extracted the professional (Psy-Q) libraries and made them
-usable with a modern GCC compiler and debugger. They are also
-maintaining the PS1 emulator <a target="_blank" class="urllink"
+<p class="vspace"> </p>
+<p class="vspace"><br>
+The <a target="_blank" class="urllink" href="https://psx.dev"
+rel="nofollow">PSX.Dev</a> community have extracted the
+professional (Psy-Q) libraries and made them usable with a
+modern GCC compiler and debugger. They are also maintaining the
+PS1 emulator <a target="_blank" class="urllink"
 href="https://github.com/grumpycoders/pcsx-redux"
 rel="nofollow">PCSX-REDUX</a> which also allows GDB to step
 through code. And they have combined all these projects into a
@@ -49,7 +70,9 @@ Homebrew development, by Nicolas Noble.</a> </strong> </p>
 the video. Make sure it builds, runs and step debug correctly.
 Installing clangd is also recommended. <br>
 </p>
-<h3 id="PSX.DEV_Net_Yaroze_project">The Net Yaroze template.</h3>
+<h3 id="PSX.DEV_Net_Yaroze_project"><br>
+</h3>
+<h2>The Net Yaroze template.</h2>
 <p>This Net Yaroze template requires the Psy-Q and nugget tools,
 if you ran the Psy-Q Cube demo, there's nothing else to install.<br>
 The instructions are the same as per the Psy-Q Cube demo:<br>
@@ -66,10 +89,9 @@ href="https://github.com/gwald/psyq_to_netyaroze"
 moz-do-not-send="true">Net Yaroze headers</a> and creates a
 demo program <a moz-do-not-send="true"
 href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">originally
-
-
-from here</a>. It should automatically load the new project
-into Visual Code.<br>
+from
+here</a>. It should automatically load the new project into
+Visual Code.<br>
 </li>
 <li>Now we are ready to run and debug, Hit <b>CTRL + Shift + P</b>
 and select <b>PSX.DEV: Build Debug</b>, it should build
@@ -80,23 +102,13 @@ Launch </b><b>PCSX-Redux</b>, this will launch the emulator
 but it will not start. </li>
 <li>Return to Visual Code and hit <b>F5</b> to start the
 debugger, step over a few lines and loop through the <i>while(
-
-
-!DONE )</i> loop, put a break point after the <b>if(
+!DONE
+)</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
-
-
-
-
 about
-
-
-
-
 line
-
-
-86. <br>
+86.
+<br>
 </li>
 <li>Next click run, to return to the step debugger, simply hit
 the up button on the controller. <br>
@@ -107,7 +119,8 @@ the up button on the controller. <br>
 <hr width="100%" size="2">
 <h3><br>
 </h3>
-<h3>Changing the linker settings.</h3>
+<h2><a id="Changing_the_linker_settings">Changing the
+linker settings.</a></h2>
 <br>
 The Net Yaroze linker setting are defined typically like:<br>
 <b>-Xlinker -Ttext -Xlinker 80090000 </b><br>
@@ -122,18 +135,10 @@ that's the location of the Net Yaroze libps.exe file (like a DLL
 which makes executables smaller to transfer over serial - See
 Memory Map in the <a moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/38/mode/1up">Net
-
-
-
 Yaroze
-
-
-
-
 User
-
-
-Guide PDF</a>).<br>
+Guide
+PDF</a>).<br>
 We need to change it to the first RAM available to us, which is
 after libps.exe, 0x80090000 (loaded low).<br>
 To do this with PSX.DEV's GCC, add this line as the first LDFLAGS
@@ -146,7 +151,8 @@ data files, loaded higher in RAM. <br>
 <br>
 <br>
 <hr width="100%" size="2"><br>
-<h3>Replicating the Net Yaroze Siocons script.</h3>
+<h2><a id="Replicating_the_Net_Yaroze_Siocons">Replicating
+the Net Yaroze Siocons script.</a></h2>
 <br>
 Siocons is a DOS terminal program which can send and receive data
 from the Net Yaroze after it has load the Net Yaroze boot disc.<br>
@@ -207,17 +213,26 @@ also.<br>
 <br>
 <br>
 <hr width="100%" size="2"><br>
-<h3> Accessing the disc.</h3>
+<h2><a id="Accessing_the_disc">Accessing the disc.</a></h2>
 <p><br>
-<b>Reading Net Yaroze boot disc data.</b><br>
+</p>
+<h2><b><a id="Reading_Net_Yaroze_boot_disc_data">Reading Net
+Yaroze boot disc data.</a></b></h2>
+<p>
 </p>
 <p class="vspace">The Net Yaroze boot disc (<a
 moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-cip2.2-boot-disc-exe-cart-rom">there
 
 
-are several versions available</a>) has a few generic assets
-that can be load and used in your games.<br>
+
+
+are
+
+several
+versions
+available</a>) has a few generic assets that
+can be load and used in your games.<br>
 And contrary to common belief, the Net Yaroze SDK can read data
 files from the CDROM.<br>
 On a real Net Yaroze PlayStation, it can only be official
@@ -241,14 +256,18 @@ into Audio RAM, the RAM space can be reused.<br>
 <td valign="top">Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+
+
+&nbsp;
+
+&nbsp;
+&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
 </td>
 <td valign="top">About<br>
 </td>
 <td valign="top">size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
 <br>
 </td>
 </tr>
@@ -421,7 +440,9 @@ border="1">
 </tr>
 </tbody>
 </table>
-<pre class="escaped"><br><b>Playing CD Digital Audio<br></b><br><br>The Net Yaroze can also play any audio CD tracks( CD-DA - CD Digital Audio), and are played in the background without any CPU resources.<br>This can be done by using the CUE/BIN files instead of just the .iso image.<br><br></pre>
+<pre class="escaped"><br></pre>
+<h2><b><a id="Playing_CD_Digital_Audio">Playing CD Digital Audio.</a></b></h2>
+<pre class="escaped"><br><br>The Net Yaroze can also play any audio CD tracks( CD-DA - CD Digital Audio), and are played in the background without any CPU resources.<br>This can be done by using the CUE/BIN files instead of just the .iso image.<br><br></pre>
 <table width="673" height="277" cellspacing="2" cellpadding="2"
 border="1">
 <tbody>
@@ -445,8 +466,10 @@ border="1">
 </table>
 <pre class="escaped"><br>Do not call CdPlay with the parameter 3, instead hardcode your total track number and manage the currently playing track manually.<br>Playing CD-DA tracks does work as expected.<br><br><br>For tutorials on reading CDROM data or playing CD digital audio see <a moz-do-not-send="true" href="https://github.com/gwald/netyaroze_demo/tree/main/tutor/chap3">chapter 3</a>.<br></pre>
 <br>
-<hr width="100%" size="2"><br>
-<h3> Reusing asset RAM</h3>
+<hr width="100%" size="2">
+<h2><br>
+</h2>
+<h2> <a id="Reusing_asset_RAM">Reusing asset RAM.</a></h2>
 If you only load your assets once in your program (which is
 typical for Net Yaroze) and you organize your files correctly,
 then after they have been copied to their respective places ie
@@ -461,8 +484,8 @@ required to be in RAM, ie TMD's.<br>
 <br>
 <br>
 <hr width="100%" size="2"><br>
-<h3>Tips &amp; Notes<br>
-</h3>
+<h2><a id="Tips__Notes">Tips &amp; Notes.</a><br>
+</h2>
 <p class="vspace">Psy-Q requires the libGS libraries to be
 initialize with a GsInitGraph call <b>FIRST</b> before using
 other libGS functions, in particular FntLoad.<br>
@@ -480,8 +503,8 @@ int KanjiFntPrint(int id, char *, ...);<br>
 <br>
 </p>
 <hr width="100%" size="2"><br>
-<h3>TODO:<br>
-</h3>
+<h2><a id="TODO">TODO.</a><br>
+</h2>
 <b>TestCard </b>- not implemented.<br>
 <b>GsCOORDINATE2 nested parents</b> - screws the projection matrix
 somehow somewhere? - currently the fix is not to use nest parents,
@@ -492,8 +515,8 @@ one parent seems to work fine.<br>
 <hr width="100%" size="2">
 <p class="vspace"><br>
 </p>
-<h3 class="vspace">Support<br>
-</h3>
+<h2 class="vspace">Support.<br>
+</h2>
 <p class="vspace">The Psy-Q to Net Yaroze glue (psyq_to_netyaroze)
 is still Work In Progress.<br>
 There are a few things missing or not working, these are
@@ -508,16 +531,23 @@ href="https://github.com/pcsx-redux/nugget">Psy-Q conversion</a>
 issue;</p>
 <p class="vspace">2) or Net Yaroze only helper functions like
 TestCard, GetPadBuf which are not found in Psy-Q.<br>
-</p>
 <br>
+</p>
 <p class="vspace">If you have problems, errors or fixes, please
 raise an issue here:<br>
 <br>
 <a moz-do-not-send="true"
-href="https://github.com/gwald/psyq_to_netyaroze/issues">https://github.com/gwald/psyq_to_netyaroze/issues<br>
-</a></p>
-<a moz-do-not-send="true"
-href="https://github.com/gwald/psyq_to_netyaroze/issues"> </a>
-<hr> </div>
+href="https://github.com/gwald/psyq_to_netyaroze/issues">https://github.com/gwald/psyq_to_netyaroze/issues</a><br>
+</p>
+<p class="vspace"><br>
+</p>
+<p class="vspace"> </p>
+<hr width="100%" size="2"><a moz-do-not-send="true"
+href="https://www.seamonkey-project.org/">Made with SeaMonkey
+Composer.</a><br>
+<br>
+<br>
+</div>
 </body>
 </html>
+
