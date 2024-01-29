@@ -1,3 +1,6 @@
+**!!!! UNDER DEVELOPER - WORK IN PROGRESS - EXPERIMENTAL !!!!**
+
+
 # psyq_to_netyaroze
 Updated Net Yaroze headers which let you use Psy-Q SDK as if it was Net Yaroze SDK, for the 
 [PSX.DEV](https://www.psx.dev) (Visual Code template) project. File include/psyq.h replicates Net Yaroze excusive features.
