@@ -7,9 +7,10 @@
 <div class="b3-fullpost">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <h1 class="vspace">PSX.Dev Visual Studio Code Extension</h1>
-<br>
-<p>
-<a href="#PSX.Dev_Visual_Studio_Code_Extension">PSX.Dev
+<b>!!!! UNDER DEVELOPER - WORK IN PROGRESS - EXPERIMENTAL !!!!</b><b><br>
+</b><b> </b>
+<p><b> </b><a href="#PSX.Dev_Visual_Studio_Code_Extension">PSX.Dev
+
 VisualStudio Code Extension</a><br>
 <a href="#PSX.DEV_Net_Yaroze_project">The Net Yaroze template.</a><br>
 <a href="#Changing_the_linker_settings">Changing the linker
@@ -89,9 +90,9 @@ href="https://github.com/gwald/psyq_to_netyaroze"
 moz-do-not-send="true">Net Yaroze headers</a> and creates a
 demo program <a moz-do-not-send="true"
 href="https://github.com/gwald/netyaroze_demo/blob/main/tutor/chap2/9/main.c">originally
-from
-here</a>. It should automatically load the new project into
-Visual Code.<br>
+
+from here</a>. It should automatically load the new project
+into Visual Code.<br>
 </li>
 <li>Now we are ready to run and debug, Hit <b>CTRL + Shift + P</b>
 and select <b>PSX.DEV: Build Debug</b>, it should build
@@ -102,13 +103,11 @@ Launch </b><b>PCSX-Redux</b>, this will launch the emulator
 but it will not start. </li>
 <li>Return to Visual Code and hit <b>F5</b> to start the
 debugger, step over a few lines and loop through the <i>while(
-!DONE
-)</i> loop, put a break point after the <b>if(
+
+!DONE )</i> loop, put a break point after the <b>if(
 PAD_PRESS(buffer1,PAD_UP) )</b> line at<b> sprite.y -=5;</b>&nbsp;
-about
-line
-86.
-<br>
+
+about line 86. <br>
 </li>
 <li>Next click run, to return to the step debugger, simply hit
 the up button on the controller. <br>
@@ -119,8 +118,8 @@ the up button on the controller. <br>
 <hr width="100%" size="2">
 <h3><br>
 </h3>
-<h2><a id="Changing_the_linker_settings">Changing the
-linker settings.</a></h2>
+<h2><a id="Changing_the_linker_settings">Changing the linker
+settings.</a></h2>
 <br>
 The Net Yaroze linker setting are defined typically like:<br>
 <b>-Xlinker -Ttext -Xlinker 80090000 </b><br>
@@ -135,10 +134,8 @@ that's the location of the Net Yaroze libps.exe file (like a DLL
 which makes executables smaller to transfer over serial - See
 Memory Map in the <a moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-documents/020-1997-userguide/page/38/mode/1up">Net
-Yaroze
-User
-Guide
-PDF</a>).<br>
+
+Yaroze User Guide PDF</a>).<br>
 We need to change it to the first RAM available to us, which is
 after libps.exe, 0x80090000 (loaded low).<br>
 To do this with PSX.DEV's GCC, add this line as the first LDFLAGS
@@ -151,8 +148,8 @@ data files, loaded higher in RAM. <br>
 <br>
 <br>
 <hr width="100%" size="2"><br>
-<h2><a id="Replicating_the_Net_Yaroze_Siocons">Replicating
-the Net Yaroze Siocons script.</a></h2>
+<h2><a id="Replicating_the_Net_Yaroze_Siocons">Replicating the Net
+Yaroze Siocons script.</a></h2>
 <br>
 Siocons is a DOS terminal program which can send and receive data
 from the Net Yaroze after it has load the Net Yaroze boot disc.<br>
@@ -218,8 +215,7 @@ also.<br>
 </p>
 <h2><b><a id="Reading_Net_Yaroze_boot_disc_data">Reading Net
 Yaroze boot disc data.</a></b></h2>
-<p>
-</p>
+<p> </p>
 <p class="vspace">The Net Yaroze boot disc (<a
 moz-do-not-send="true"
 href="https://archive.org/details/net-yaroze-cip2.2-boot-disc-exe-cart-rom">there
@@ -231,8 +227,9 @@ are
 
 several
 versions
-available</a>) has a few generic assets that
-can be load and used in your games.<br>
+
+available</a>) has a few generic assets that can be load and
+used in your games.<br>
 And contrary to common belief, the Net Yaroze SDK can read data
 files from the CDROM.<br>
 On a real Net Yaroze PlayStation, it can only be official
@@ -262,12 +259,14 @@ into Audio RAM, the RAM space can be reused.<br>
 
 &nbsp;
 &nbsp;
+
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
 </td>
 <td valign="top">About<br>
 </td>
 <td valign="top">size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 <br>
 </td>
 </tr>
@@ -550,4 +549,3 @@ Composer.</a><br>
 </div>
 </body>
 </html>
-
