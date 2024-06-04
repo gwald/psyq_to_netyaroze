@@ -49,7 +49,7 @@ One to four vertical synchronization interruptions must be performed at the end 
 */
 
 
-inline long TestCard( long chan)
+static inline long TestCard( long chan)
 {
 return 0;
 }
