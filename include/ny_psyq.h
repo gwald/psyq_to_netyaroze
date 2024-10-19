@@ -75,6 +75,8 @@ This function initializes all connected controllers of the type specified by the
 At present, only type 0 controllers are supported.
 This function is for prototyping purposes only.
 */
+	int i;
+	
 	InitPAD ((char *)GetPadBuf_pad_buff[0], MAX_CONTROLLER_BYTES, (char *)GetPadBuf_pad_buff[1], MAX_CONTROLLER_BYTES);
 	
 	StartPAD(); //Explanation - Triggered by the interruption of a vertical retrace line, this function starts to read the controller. ChangeClearPAD (1) is executed internally.
@@ -88,7 +90,7 @@ This function specifies whether to complete interrupt processing in a control dr
 retrace line interrupt, or to pass processing to a lower priority interrupt module without completion. A val
 value of 1 specifies completion, while a val value of 0 specifies passing.
 */
-	 for(int i = 0;i < MAX_CONTROLLER_BYTES; i++)
+	 for(i = 0;i < MAX_CONTROLLER_BYTES; i++)
          GetPadBuf_pad_buff[0][i] = GetPadBuf_pad_buff[1][i] = 0xff; // prime init pad results to nothing to 1's
 }
 
