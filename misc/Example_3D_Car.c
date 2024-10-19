@@ -2,8 +2,7 @@
  *
  
 This is an "ALL IN ONE" version of Peter's Net Yaroze 3D course, full code and documentation is here: https://github.com/gwald/netyaroze_demo/tree/main/User%20Created%20Guides/Peter%20Passmore%203D%20course
-Only change was moving GsInitGraph as the first libGS function called.
-You can copy and paste this code into your main.c and delete the header files in you Net Yaroze project.
+You can copy and paste this code into your main.c file in your Net Yaroze project.
 
 from: Peter Passmore 3D course (SCEE Net Yaroze) - COM3311 Programming Interactive Graphical Systems
 Middlesex University, 1997,
