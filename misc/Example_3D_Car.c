@@ -2,7 +2,7 @@
  *
  
 This is an "ALL IN ONE" version of Peter's Net Yaroze 3D course, full code and documentation is here: https://github.com/gwald/netyaroze_demo/tree/main/User%20Created%20Guides/Peter%20Passmore%203D%20course
-You can copy and paste this code into your main.c file in your Net Yaroze project.
+You can copy and paste this code into your main.c file in your Net Yaroze template project.
 
 from: Peter Passmore 3D course (SCEE Net Yaroze) - COM3311 Programming Interactive Graphical Systems
 Middlesex University, 1997,
