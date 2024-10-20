@@ -15,20 +15,17 @@ PSX.Dev - Visual Studio Code Net Yaroze Extension</h1>
 <br><b>Maintained here: </b><a href="https://github.com/gwald/psyq_to_netyaroze/issues" moz-do-not-send="true">https://github.com/gwald/psyq_to_netyaroze</a>
 <p>
 <hr width="100%" size="2">
-<p><a href="#PSX.Dev_Visual_Studio_Code_Extension">PSX.Dev VisualStudio
-Code Extension</a>
-<br><a href="#PSX.DEV_Net_Yaroze_project">The Net Yaroze template.</a>
-<br><a href="#Replicating_the_Net_Yaroze_Siocons">Replicating the Net Yaroze
-Siocons script.</a>
-<br><a href="#Accessing_the_disc">Accessing the disc</a>
-<br>- <a href="#Reading_Net_Yaroze_boot_disc_data">Reading Net Yaroze boot
-disc data.</a>
-<br>- <a href="#Playing_CD_Digital_Audio">Playing CD Digital Audio.</a>
-<br><a href="#Changing_the_linker_settings">Changing the linker settings.</a>
-<br><a href="#Reusing_asset_RAM">Reusing asset RAM.</a>
-<br><a href="#Tips__Notes">Tips &amp; Notes</a>
-<br><a href="#TODO">TODO</a>
-<br><a href="#Support">Support</a>
+<p>PSX.Dev VisualStudio Code Extension
+<br>The Net Yaroze template.
+<br>Replicating the Net Yaroze Siocons script.
+<br>Accessing the disc
+<br>- Reading Net Yaroze boot disc data.
+<br>- Playing CD Digital Audio.
+<br>Changing the linker settings.
+<br>Reusing asset RAM.
+<br>Tips &amp; Notes
+<br>TODO
+<br>Support
 <p>
 <hr width="100%" size="2">
 <h2 id="PSX.Dev_Visual_Studio_Code_Extension">
@@ -131,6 +128,19 @@ Close the emulator to stop debugging.</li>
 </table>
 
 <br>&nbsp;
+<p>
+<hr width="100%" size="2">
+<h2>
+Found issues with Psy-Q Nugget library.</h2>
+&nbsp;
+<h3>
+<b>Hierarchical node parenting doesn't work.</b></h3>
+Using the <b>GsCOORDINATE2</b> field <b>super</b> which is used to set
+the parent node doesn't work. It will not display parented objects or display
+with screwed projection.
+<br>Currently, unfortunately the only fix is not to use parented objects.
+<br>The issue seems to be in either GsGetLws/GsGetLs or GsSetLsMatrix where
+the parenting nodes are used.
 <p>
 <hr width="100%" size="2">
 <h2>
@@ -413,9 +423,7 @@ scale, 8bit 128x32</td>
 CD-DA - CD Digital Audio), and are played in the background without any
 CPU resources.
 <br>This can be done by using the CUE/BIN files instead of just the .iso
-image.
-<br>&nbsp;
-<br>&nbsp;</div>
+image.</div>
 
 <p><br>The debugger must first load the cdrom image, similar to the loading
 of the assets from the siocons script.
@@ -471,7 +479,8 @@ files are statically link.
 not cheat!) this RAM space must not be used at all.
 <p>The Net Yaroze linker setting are defined typically like:
 <br><b>-Xlinker -Ttext -Xlinker 80090000</b>
-<p>Where 0x80090000 is the RAM location that the executable is loaded to.
+<p>Where 0x80090000 is the RAM location that the Net Yaroze executable
+would be typically loaded to.
 <p>In PSX.DEV the default is 0x80010000 (PSX RAM address range is from
 0x80010000 to 0x801FFFFF).
 <br>Loading at 0x80010000 is a problem for Net Yaroze programs because
@@ -487,6 +496,10 @@ in the makefile:
 <p>But the executable can be loaded anywhere in the PlayStation's RAM.
 For example the executable can be loaded after the assets or data files,
 loaded higher in RAM.
+<p>Please note: The Net Yaroze executable will always be alot smaller than
+a PSY-Q link executable which will be a lot bigger because it will include
+the linked libraries in the executable. This change will effect your siocons
+script IF your data is loaded after the executable (loaded low in RAM).
 <br>&nbsp;
 <p>
 <hr width="100%" size="2">
@@ -568,14 +581,10 @@ extention, the default is ps-exe:
 <br>You will need to change it to:
 <br>\third_party\nugget\exe.ld</div>
 
-<p>
 <hr width="100%" size="2">
 <h2>
 TODO.</h2>
 <b>TestCard </b>- not implemented.
-<br><b>GsCOORDINATE2 nested parents</b> - screws the projection matrix
-somehow somewhere? - currently the fix is not to use nested parents, one
-parent seems to work fine.
 <br>&nbsp;
 <p>
 <hr width="100%" size="2">
