@@ -1,6 +1,10 @@
 /*
  *
- 
+Note: You should use the included libgs.a, add this to your makefile: 
+LDFLAGS+=-Lthird_party/net-yaroze
+Above this line:
+LDFLAGS += -Lthird_party/psyq/lib
+
 This is an "ALL IN ONE" version of Peter's Net Yaroze 3D course, full code and documentation is here: https://github.com/gwald/netyaroze_demo/tree/main/User%20Created%20Guides/Peter%20Passmore%203D%20course
 You can copy and paste this code into your main.c file in your Net Yaroze template project.
 
@@ -11,19 +15,6 @@ COM3311 Programming Interactive Graphical Systems
 Net Yaroze Tutorial
 
 
-
-compile:
-mips-unknown-ecoff-gcc -g  -O3 -Werror -funsigned-char -c psx.c -o main.o
-mips-unknown-ecoff-gcc -Xlinker -Map -Xlinker mapfile.txt -Xlinker -Ttext -Xlinker 8011d9ff  main.o -o main.exe
-
-
-create siocons.auto file:
-local load main.exe
-go
-
-run:
-yarexe siocons.auto
-no$psx psx.exe
 
 */
 
