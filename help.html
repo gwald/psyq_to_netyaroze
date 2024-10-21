@@ -15,18 +15,20 @@ PSX.Dev - Visual Studio Code Net Yaroze Extension</h1>
 <br><b>Maintained here: </b><a href="https://github.com/gwald/psyq_to_netyaroze/issues" moz-do-not-send="true">https://github.com/gwald/psyq_to_netyaroze</a>
 <p>
 <hr width="100%" size="2">
-<p>PSX.Dev VisualStudio Code Extension
-<br>The Net Yaroze template.
+<br>PSX.Dev Visual Studio Code Extension
+<br>Installing Net Yaroze template.
+<br>Found issues with Psy-Q Nugget library.
 <br>Replicating the Net Yaroze Siocons script.
-<br>Accessing the disc
-<br>- Reading Net Yaroze boot disc data.
-<br>- Playing CD Digital Audio.
+<br>Accessing the disc.
+<br>Reading Net Yaroze boot disc data.
+<br>Playing CD Digital Audio.
 <br>Changing the linker settings.
 <br>Reusing asset RAM.
-<br>Tips &amp; Notes
-<br>TODO
-<br>Support
-<p>
+<br>Using with the original Psy-Q.
+<br>Tips &amp; Notes.
+<br>TODO.
+<br>Support.
+<br>
 <hr width="100%" size="2">
 <h2 id="PSX.Dev_Visual_Studio_Code_Extension">
 PSX.Dev Visual Studio Code Extension</h2>
@@ -138,9 +140,18 @@ Found issues with Psy-Q Nugget library.</h2>
 Using the <b>GsCOORDINATE2</b> field <b>super</b> which is used to set
 the parent node doesn't work. It will not display parented objects or display
 with screwed projection.
-<br>Currently, unfortunately the only fix is not to use parented objects.
-<br>The issue seems to be in either GsGetLws/GsGetLs or GsSetLsMatrix where
-the parenting nodes are used.
+<br>To fix it requires recreating the psy-q nugget libraries, a newly created
+libgs.a file is located in your third_party/net-yaroze folder, to use it,
+in your makefile just add this location as a library source, with the -L
+option like this:
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER COLS=1 WIDTH="100%" >
+<tr>
+<td>LDFLAGS=-Xlinker --defsym=TLOAD_ADDR=0x80090000&nbsp;&nbsp;&nbsp; -Lthird_party/net-yaroze&nbsp;</td>
+</tr>
+</table>
+
 <p>
 <hr width="100%" size="2">
 <h2>
