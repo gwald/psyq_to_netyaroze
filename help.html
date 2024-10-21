@@ -142,13 +142,14 @@ the parent node doesn't work. It will not display parented objects or display
 with screwed projection.
 <br>To fix it requires recreating the psy-q nugget libraries, a newly created
 libgs.a file is located in your third_party/net-yaroze folder, to use it,
-in your makefile just add this location as a library source, with the -L
+in your makefile just add this location as a library source, with the <b>-L</b>
 option like this:
 <br>&nbsp;
 <br>&nbsp;
 <table BORDER COLS=1 WIDTH="100%" >
 <tr>
-<td>LDFLAGS=-Xlinker --defsym=TLOAD_ADDR=0x80090000&nbsp;&nbsp;&nbsp; -Lthird_party/net-yaroze&nbsp;</td>
+<td>LDFLAGS=-Xlinker --defsym=TLOAD_ADDR=0x80090000&nbsp;&nbsp;<b>&nbsp;
+-Lthird_party/net-yaroze&nbsp;</b></td>
 </tr>
 </table>
 
